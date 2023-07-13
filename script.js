@@ -1,26 +1,20 @@
-const bandNames = ['The Beatles', 'Red Hot Chili Peppers', 'Metallica', 'Aerosmith', 'The Rolling Stones', 'Nirvana'];
-
-// Function to remove articles from the band names
-const removeArticles = (name) => {
-  // List of articles to be removed
-  const articles = ['the', 'a', 'an'];
-
-  // Convert the name to lowercase
-  const lowercaseName = name.toLowerCase();
-
-  // Check if the name starts with an article
-  for (let article of articles) {
-    if (lowercaseName.startsWith(article + ' ')) {
-      // Remove the article from the name
-      return name.substring(article.length + 1);
-    }
-  }
-
-  return name;
-};
-
-// Remove articles and sort the band names
-const sortedBandNames = bandNames.map(removeArticles).sort();
-
-// Print the sorted band names
-console.log(sortedBandNames);
+let bandNames=['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal']
+let articles = ['A', 'AN', 'THE']
+ 
+	bandNames.sort((a,b) => (strip(a)> strip(b))? 1: -1)
+	const ref= document.getElementsByTagName("ul")[0] 
+	for (let i=0;i<bandNames.length; i++){
+		const li = document.createElement("li")
+		li.innerText= bandNames [i]
+		ref.append(li)
+	}
+function strip(word){
+	let arr = word.split(" ")
+	let s=""
+	for(let i=0;i<arr.length;i++){
+if(articles.indexOf(arr[i].toUpperCase()) === -1){
+	s=s+arr[i]
+}
+}
+return s.trim()
+}
